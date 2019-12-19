@@ -22,7 +22,8 @@ const game = {
 
 	},
 	startGame() {
-		
+		setInterval(() => {
+		}, 1000)
 	}
 
 }
@@ -40,6 +41,7 @@ $('#name-input-form').on('submit', (event) =>{
 	const $h1 = $('<h1></h1>');
 	$h1.text($nameInput);
 	$(document.body).append($h1);
+	game.startGame();
 	$('#name-input-form').hide();
 })
 
