@@ -16,10 +16,15 @@ class Tamagotchi {
 
 //GAME OBJECT
 const game = {
+	timer: 0,
 	createTamagotchi() {
 		const buddy = new Tamagotchi();
 
+	},
+	startGame() {
+		
 	}
+
 }
 
 
