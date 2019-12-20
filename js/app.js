@@ -11,19 +11,50 @@ class Tamagotchi {
 		this.hunger = hunger; //1-10 scale
 		this.sleepiness = sleepiness;//1-10 scale
 		this.boredom = boredom;
+
 	}
 }
 
 //GAME OBJECT
 const game = {
-	timer: 0,
-	createTamagotchi() {
+	hunger: 0,
+	boredom: 0,
+	sleepiness: 0,
+	age: 0,
+	//create a timer function to keep track of the time
+	timer() {
+		const timer = setInterval(() => {
+			this.hunger++;
+			this.boredom++;
+			this.sleepiness++;
+
+			const $currentSleep = $('#current-sleep').text(this.sleepiness);
+			const $currentBoredom = $('#current-boredom').text(this.boredom);
+			const $currentHunger = $('#current-hunger').text(this.hunger);
+
+			if(this.hunger === 10 || this.boredom === 10 || this.sleepiness === 10) {
+				clearInterval(timer);
+				this.buddyDies();
+			}
+		}, 4000)
+
+		
+	},
+	createBuddy() {
 		const buddy = new Tamagotchi();
+		this.startGame();
 
 	},
 	startGame() {
-		setInterval(() => {
-		}, 1000)
+		this.timer();
+	},
+	buddyDies() {
+		alert('Your tamagotchi has died');
+	},
+	stopGame() {
+		if(this.hunger === 10 || this.boredom === 10 || this.sleepiness === 10) {
+			this.buddyDies();
+		}
 	}
 
 }
@@ -47,8 +78,8 @@ $('#name-input-form').on('submit', (event) =>{
 
 
 
-game.createTamagotchi();
+//game.startGame();
 
-
+console.log(game.startGame());
 
 
