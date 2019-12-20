@@ -24,7 +24,7 @@ const game = {
 	//create a timer function to keep track of the time
 	timer() {
 		const timer = setInterval(() => {
-			this.hunger++;
+			this.hunger+= 2;
 			this.boredom++;
 			this.sleepiness++;
 			this.age += 2;
@@ -40,8 +40,7 @@ const game = {
 				clearInterval(timer);
 				this.buddyDies();
 			}
-		}, 500)
-
+		}, 1000)
 		
 	},
 	createBuddy() {
@@ -49,6 +48,8 @@ const game = {
 		const buddy = new Tamagotchi();
 		this.startGame();
 
+	},
+	feedingBuddy() {
 	},
 	startGame() {
 		this.timer();
@@ -60,8 +61,7 @@ const game = {
 		$h1.text($('#name-input').val() + ' has died');
 		$(document.body).append($h1);
 	},
-	stopGame() {
-		
+	restartGame() {
 		
 	}
 
@@ -83,6 +83,44 @@ $('#name-input-form').on('submit', (event) =>{
 	game.startGame();
 	$('#name-input-form').hide();
 })
+
+$('#feed').on('click', (event) =>{
+	event.preventDefault();
+
+	if(game.hunger >= 3) {
+		game.hunger-= 3;
+	}
+})
+
+$('#sleep').on('click', (event) =>{
+	event.preventDefault();
+
+	if(game.sleepiness >= 3) {
+		game.sleepiness -= 3;
+	}
+})
+
+$('#play').on('click', (event) =>{
+	event.preventDefault();
+
+	if(game.boredom >= 3) {
+		game.boredom -= 3;
+	}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
