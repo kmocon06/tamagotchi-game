@@ -24,7 +24,7 @@ const game = {
 	//create a timer function to keep track of the time
 	timer() {
 		const timer = setInterval(() => {
-			this.hunger+= 2;
+			this.hunger++;
 			this.boredom++;
 			this.sleepiness++;
 			this.age += 2;
@@ -40,7 +40,7 @@ const game = {
 				clearInterval(timer);
 				this.buddyDies();
 			}
-		}, 1000)
+		}, 2000)
 		
 	},
 	createBuddy() {
@@ -84,27 +84,31 @@ $('#name-input-form').on('submit', (event) =>{
 	$('#name-input-form').hide();
 })
 
+//when you click on the feed me button then the tamagatchi's hunger should 
+//go down
 $('#feed').on('click', (event) =>{
 	event.preventDefault();
 
-	if(game.hunger >= 3) {
-		game.hunger-= 3;
+	if(game.hunger >= 0) {
+		game.hunger-= 1;
 	}
 })
 
+//when your tamagatchi goes to sleep then the sleepiness should go down
 $('#sleep').on('click', (event) =>{
 	event.preventDefault();
 
-	if(game.sleepiness >= 3) {
-		game.sleepiness -= 3;
+	if(game.sleepiness >= 0) {
+		game.sleepiness -= 1;
 	}
 })
 
+//when the tamagatchi wants to play then the boredom should go down
 $('#play').on('click', (event) =>{
 	event.preventDefault();
 
-	if(game.boredom >= 3) {
-		game.boredom -= 3;
+	if(game.boredom >= 0) {
+		game.boredom -= 1;
 	}
 })
 
