@@ -38,11 +38,12 @@ const game = {
 			const $currentAge = $('#current-age').text(this.age);
 
 			//if hunger or boredom or sleepiness get to 10 then your buddy dies
+			this.gettingOlder();
 			if(this.hunger === 10 || this.boredom === 10 || this.sleepiness === 10) {
-				clearInterval(timer);
 				this.buddyDies();
+				clearInterval(timer);
 			}
-		}, 2000)
+		}, 2500)
 		
 	},
 	createBuddy() {
@@ -57,16 +58,19 @@ const game = {
 		this.timer();
 	},
 	gettingOlder() {
-		if(this.$currentAge >= 5) {
-			{$('.current-character').attr('src', 'yodadancing.gif')}
+		if(this.age === 30) {
+			//{$('.current-character').attr('src', 'yodadancing.gif')}
+			$('#baby-yoda1').attr('src', 'yodadancing.gif');
 		}
 	},
 	buddyDies() {
 		//make it so that whatever name the user has submitted appears
 		//when the buddy has died
+		$('#baby-yoda1').attr('src', 'yodasleeping2.jpg');
 		const $h1 = $('<h1></h1>');
-		$h1.text($('#name-input').val() + ' has died');
+		$h1.text($('#name-input').val() + ' has died :(');
 		$(document.body).append($h1);
+		console.log($('#baby-yoda1'));
 
 		// const $img = $('<img>');
 		// $img.attr('src', 'yodasleeping2.jpg');
@@ -92,6 +96,8 @@ $('#name-input-form').on('submit', (event) =>{
 	$h1.text($nameInput);
 	$(document.body).append($h1);
 	game.startGame();
+
+	//hide the form once the game starts
 	$('#name-input-form').hide();
 
 	// const $babyYoda = $('<div></div>');
@@ -105,6 +111,7 @@ $('#feed').on('click', (event) =>{
 	event.preventDefault();
 
 	game.hunger = 0;
+	//$(document.body).css('background-color', 'LightGreen');
 
 })
 
@@ -114,8 +121,37 @@ $('#sleep').on('click', (event) =>{
 
 	game.sleepiness = 0;
 
-	//screen turns black when you click on the light switch to go to sleep
+
+	// change the back grand color to black
+	// and set opacity
 	$(document.body).css('background-color', 'black');
+	$(document.body).css('opacity', '0.5');
+	$(document.body).css('color', 'white');
+
+	setTimeout( () =>{
+		// if(game.sleepiness <= 0) {
+			$(document.body).css('background-color', 'LightGreen');
+			$(document.body).css('opacity', '0.9');
+			$(document.body).css('color', 'black');
+			game.boredom--;
+			game.hunger--;
+
+		// }
+	}, 6500)
+
+		// change the back grand color to black
+		// and set opacity
+
+	//screen turns black when you click on the light switch to go to sleep
+	//$(document.body).css('background-color', 'black');
+  
+  // var state = $('#sleep').html();
+  // var $switch = $('.onoffswitch-checkbox');
+
+  // $('#light').html(state == 'Off' ? 'On' : 'Off');
+
+  // $checkbox.prop('checked', !$checkbox.prop('checked'));
+
 	//$(document.body).css('background-color', 'LightGreen')
 
 })
@@ -127,11 +163,6 @@ $('#play').on('click', (event) =>{
 	game.boredom = 0;
 
 })
-
-
-
-
-
 
 
 
