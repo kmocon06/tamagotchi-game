@@ -27,11 +27,15 @@ const game = {
 			this.hunger++;
 			this.boredom++;
 			this.sleepiness++;
+			this.age += 2;
 
 			const $currentSleep = $('#current-sleep').text(this.sleepiness);
 			const $currentBoredom = $('#current-boredom').text(this.boredom);
 			const $currentHunger = $('#current-hunger').text(this.hunger);
+			const $currentAge = $('#current-age').text(this.age);
 
+
+			//if hunger or boredom or sleepiness get to 10 then your buddy dies
 			if(this.hunger === 10 || this.boredom === 10 || this.sleepiness === 10) {
 				clearInterval(timer);
 				this.buddyDies();
@@ -52,9 +56,8 @@ const game = {
 		alert('Your tamagotchi has died');
 	},
 	stopGame() {
-		if(this.hunger === 10 || this.boredom === 10 || this.sleepiness === 10) {
-			this.buddyDies();
-		}
+		
+		
 	}
 
 }
