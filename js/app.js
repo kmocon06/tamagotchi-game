@@ -40,11 +40,12 @@ const game = {
 				clearInterval(timer);
 				this.buddyDies();
 			}
-		}, 4000)
+		}, 500)
 
 		
 	},
 	createBuddy() {
+		//create a new buddy for the user
 		const buddy = new Tamagotchi();
 		this.startGame();
 
@@ -53,7 +54,11 @@ const game = {
 		this.timer();
 	},
 	buddyDies() {
-		alert('Your tamagotchi has died');
+		//make it so that whatever name the user has submitted appears
+		//when the buddy has died
+		const $h1 = $('<h1></h1>');
+		$h1.text($('#name-input').val() + ' has died');
+		$(document.body).append($h1);
 	},
 	stopGame() {
 		
@@ -81,8 +86,6 @@ $('#name-input-form').on('submit', (event) =>{
 
 
 
-//game.startGame();
 
-console.log(game.startGame());
 
 
