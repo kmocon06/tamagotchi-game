@@ -2,3 +2,7 @@ body {
 	background-color: LightGreen;
 }
 
+#babyyoda1 {
+	position: absolute;
+	background: url(babyyoda.gif) no-repeat;
+}
