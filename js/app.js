@@ -61,12 +61,14 @@ const game = {
 		if(this.age === 48) {
 			//{$('.current-character').attr('src', 'yodadancing.gif')}
 			$('#baby-yoda1').attr('src', 'yodadancing.gif');
+			$('#baby-yoda1').width(500);
 		}
 	},
 	buddyDies() {
 		//make it so that whatever name the user has submitted appears
 		//when the buddy has died
 		$('#baby-yoda1').attr('src', 'yodasleeping2.jpg');
+		$('#baby-yoda1').width(500);
 		const $h1 = $('<h1></h1>');
 		$h1.text($('#name-input').val() + ' has died :(');
 		$(document.body).append($h1);
@@ -76,9 +78,13 @@ const game = {
 		// $img.attr('src', 'yodasleeping2.jpg');
 		// document.body.appendChild($img);
 	},
-	restartGame() {
-		
-	}
+	// restartGame() {
+	// 	let restart = prompt('Would you like to restart the game? (Yes/No)')
+	// 	if(restart.prompt.toLowerCase() === "yes") {
+
+	// 	}
+	// 	location.reload()
+	// }
 
 }
 
@@ -125,6 +131,7 @@ $('#sleep').on('click', (event) =>{
 	$(document.body).css('opacity', '0.5');
 	$(document.body).css('color', 'white');
 
+
 	setTimeout( () =>{
 		// if(game.sleepiness <= 0) {
 			$(document.body).css('background-color', 'LightGreen');
@@ -132,6 +139,7 @@ $('#sleep').on('click', (event) =>{
 			$(document.body).css('color', 'black');
 			game.boredom--;
 			game.hunger--;
+			// game.sleepiness === 0;
 
 		// }
 	}, 6500)
