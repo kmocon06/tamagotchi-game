@@ -1,8 +1,30 @@
 body {
 	background-color: LightGreen;
+	font-family: 'verdana';
 }
 
-#babyyoda1 {
+/*#babyyoda1 {
 	position: absolute;
 	background: url(babyyoda.gif) no-repeat;
+}*/
+
+header {
+	font-size: 30px;
 }
+
+#name-input {
+	width: 20%;
+	padding: 10px 10px;
+	box-sizing: border-box;
+}
+
+#play-button {
+	width: 7%;
+	padding: 5px 5px;
+}
+
+#buddy-buttons {
+	display: inline;
+}
+
+

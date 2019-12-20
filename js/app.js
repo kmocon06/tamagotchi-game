@@ -30,7 +30,7 @@ const game = {
 				this.hunger++;
 				this.boredom++;
 				this.sleepiness++;
-				this.age += 3;
+				this.age += 2;
 
 			const $currentSleep = $('#current-sleep').text(this.sleepiness);
 			const $currentBoredom = $('#current-boredom').text(this.boredom);
@@ -58,7 +58,7 @@ const game = {
 		this.timer();
 	},
 	gettingOlder() {
-		if(this.age === 30) {
+		if(this.age === 48) {
 			//{$('.current-character').attr('src', 'yodadancing.gif')}
 			$('#baby-yoda1').attr('src', 'yodadancing.gif');
 		}
@@ -100,9 +100,6 @@ $('#name-input-form').on('submit', (event) =>{
 	//hide the form once the game starts
 	$('#name-input-form').hide();
 
-	// const $babyYoda = $('<div></div>');
-	// $babyYoda.attr('id', 'babyYoda1')
-	// $(document.body).append($babyYoda)
 })
 
 //when you click on the feed me button then the tamagatchi's hunger should 
@@ -144,15 +141,6 @@ $('#sleep').on('click', (event) =>{
 
 	//screen turns black when you click on the light switch to go to sleep
 	//$(document.body).css('background-color', 'black');
-  
-  // var state = $('#sleep').html();
-  // var $switch = $('.onoffswitch-checkbox');
-
-  // $('#light').html(state == 'Off' ? 'On' : 'Off');
-
-  // $checkbox.prop('checked', !$checkbox.prop('checked'));
-
-	//$(document.body).css('background-color', 'LightGreen')
 
 })
 
